@@ -4,12 +4,12 @@ In this tutorial I will demonstrate how to apply different machine learning tech
 
 ## Overview
 
-*Part 1* demonstrates the traditional way of extracting features from the audio content, training a classifier and predicting results. Because we do not have access to the raw audio content, we cannot extract features ourselves. Fortunately, Spotify is so generous to provide extracted features via their API. Those are just low-level audio features, but they are more than any other streaming music service provide - so Kudos to Spotify for this API! 
+*Part 1* demonstrates the traditional machine learning approach of extracting features from the audio content, training a classifier and predicting results. The tutorial uses the Spotify API to retrieve pre-extracted low-level audio features and meta-data. These features are aggregated into single vector representations, normalized and used to calculate similarities between the tracks. Different approaches are presented to optimize and evaluate this approach. 
 
-*Part 2*
+*Part 2* is based on the same data as Part 1, but uses Deep Learning models to learn the similarity function. A Siamese architecture with fully connected layers is trained on the aggregated feature vectors as well as bi-directional LSTMs on sequential features. 
 
-*Part 3*
+*Part 3* introduces methods to estimate similarities between songs based on provide genre labels. These similarities are then used to train the Siamese Networks presented in Part 2.
 
 ## Requirements
 
-
+Spotipy

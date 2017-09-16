@@ -1,5 +1,7 @@
 # Finding Similar Songs on Spotify
 
+(c) Alexander Schindler, AIT Austrian Institute of Technology, Technical University of Vienna - [http://ifs.tuwien.ac.at/~schindler](http://ifs.tuwien.ac.at/~schindler)
+
 In this tutorial I will demonstrate how to apply different machine learning techniques to search for similar songs on Spotify. Because the tutorial grew in size, I decided to split it into three parts. 
 
 ## Overview
@@ -12,4 +14,9 @@ In this tutorial I will demonstrate how to apply different machine learning tech
 
 ## Requirements
 
+It uses Python 2.7 as the programming language with the popular Keras and Theano Deep Learning libraries underneath.
+
+
 Spotipy
+
+TODO: describe how to get client credentials

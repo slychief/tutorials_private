@@ -202,3 +202,5 @@ class PlotLosses(keras.callbacks.Callback):
         plt.legend()
         plt.show();
         
+def show_spotify_playlist(spotify_user, playlist_id):
+    return IFrame("https://open.spotify.com/embed?uri=spotify:user:{0}:playlist:{1}".format(spotify_user, playlist_id), 400,400)

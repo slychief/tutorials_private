@@ -4,6 +4,12 @@ import progressbar
 from joblib import Memory
 import pandas as pd
 
+import keras
+from matplotlib import pyplot as plt
+from IPython.display import clear_output
+
+
+
 def init(cachedir):
     global memory
     memory = Memory(cachedir=cachedir, verbose=0)
@@ -166,3 +172,33 @@ def aggregate_featuredata(raw_track_data, metadata):
     feature_data = np.asarray(feature_data)
     
     return feature_data
+	
+	
+# updatable plot
+# a minimal example (sort of)
+
+class PlotLosses(keras.callbacks.Callback):
+    def on_train_begin(self, logs={}):
+        self.i = 0
+        self.x = []
+        self.losses = []
+        self.val_losses = []
+        
+        self.fig = plt.figure()
+        
+        self.logs = []
+
+    def on_epoch_end(self, epoch, logs={}):
+        
+        self.logs.append(logs)
+        self.x.append(self.i)
+        self.losses.append(logs.get('loss'))
+        self.val_losses.append(logs.get('val_loss'))
+        self.i += 1
+        
+        clear_output(wait=True)
+        plt.plot(self.x, self.losses, label="loss")
+        plt.plot(self.x, self.val_losses, label="val_loss")
+        plt.legend()
+        plt.show();
+        

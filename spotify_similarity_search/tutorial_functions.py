@@ -8,6 +8,13 @@ import keras
 from matplotlib import pyplot as plt
 from IPython.display import clear_output
 
+from keras.models           import Model
+from keras.layers           import Input, Lambda, Dense, Bidirectional
+from keras.layers.recurrent import LSTM
+from keras.layers.merge     import concatenate
+from keras.optimizers       import Nadam
+from keras import backend as K
+
 
 
 def init(cachedir):
@@ -201,6 +208,13 @@ class PlotLosses(keras.callbacks.Callback):
         plt.plot(self.x, self.val_losses, label="val_loss")
         plt.legend()
         plt.show();
-        
-def show_spotify_playlist(spotify_user, playlist_id):
-    return IFrame("https://open.spotify.com/embed?uri=spotify:user:{0}:playlist:{1}".format(spotify_user, playlist_id), 400,400)
+
+		
+def contrastive_loss(y_true, y_pred):
+    margin = 1
+    return K.mean(y_true * K.square(y_pred) + (1 - y_true) * K.square(K.maximum(margin - y_pred, 0)))
+	
+def euclidean_distance(vects):
+    x, y = vects
+    return K.sqrt(K.maximum(K.sum(K.square(x - y), axis=1, keepdims=True), K.epsilon()))
+	

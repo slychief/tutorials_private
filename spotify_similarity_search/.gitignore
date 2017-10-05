@@ -1,0 +1,4 @@
+.cache-slychief
+*-checkpoint.ipynb
+*.pyc
+.ipynb_checkpoints
